@@ -1,15 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package gui;
+
+import java.util.Date;
 
 /**
  *
  * @author erividzem
  */
 public class DialogoAlta extends javax.swing.JDialog {
-    
+    private PantallaPrincipal pantallaPrincipal;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogoAlta.class.getName());
 
     /**
@@ -18,6 +16,7 @@ public class DialogoAlta extends javax.swing.JDialog {
     public DialogoAlta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        pantallaPrincipal = (PantallaPrincipal) parent;
     }
 
     /**
@@ -62,6 +61,11 @@ public class DialogoAlta extends javax.swing.JDialog {
 
         jButtonAlta.setText("ALTA");
         jButtonAlta.setPreferredSize(new java.awt.Dimension(120, 25));
+        jButtonAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAltaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
@@ -123,6 +127,22 @@ public class DialogoAlta extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaActionPerformed
+    // Recoge datos
+    String nombre = jtfNombre.getText();
+    String apellidos = jtfApellidos.getText();
+    
+    Date fechaAlta = (Date) spinnerFechaAlta.getValue();
+    String provincia = (String) jcbProvincia.getSelectedItem();
+    
+    // Crea DTO
+    Cliente cliente = new Cliente(nombre, apellidos, fechaAlta, provincia);
+    pantallaPrincipal.anadirCliente(cliente);
+    
+    // Cierra y libera recursos
+    dispose(); 
+    }//GEN-LAST:event_jButtonAltaActionPerformed
 
     /**
      * @param args the command line arguments

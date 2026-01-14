@@ -162,6 +162,9 @@
               <Dimension value="[120, 25]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAltaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
