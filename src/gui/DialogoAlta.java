@@ -1,5 +1,6 @@
 package gui;
 
+import dto.Cliente;
 import java.util.Date;
 
 /**
