@@ -1,13 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package gui;
 
-/**
- *
- * @author erividzem
- */
+
+import javax.swing.table.DefaultTableModel;
+import dto.Cliente;
+
+
 public class PantallaPrincipal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName());
@@ -17,8 +14,22 @@ public class PantallaPrincipal extends javax.swing.JFrame {
      */
     public PantallaPrincipal() {
         initComponents();
+        inicializarTabla();
     }
 
+    private void inicializarTabla() {
+        DefaultTableModel dtm = new DefaultTableModel();
+        dtm.setColumnIdentifiers(new String[]{"Nombre", "Apellidos", "Fecha Alta", "Provincia"});
+        clientes.setModel(dtm);
+    }
+    
+    public void anadirCliente(Cliente cliente) {
+        DefaultTableModel dtm = (DefaultTableModel) clientes.getModel();
+        dtm.addRow(cliente.toArrayString());
+    }
+
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

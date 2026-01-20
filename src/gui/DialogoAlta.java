@@ -1,5 +1,6 @@
 package gui;
 
+import dto.Cliente;
 import java.util.Date;
 
 
@@ -122,13 +123,13 @@ public class DialogoAlta extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaActionPerformed
-        nombre = jtfNombre.getText();
+        String nombre = jtfNombre.getText(); 
         String apellidos = jtfApellidos.getText();
         
         Date fechaAlta = (Date) spinnerFechaAlta.getValue();
         String provincia = (String) jcbProvincia.getSelectedItem();
-        
-        Cliente cliente = new Cliente(nombre, apellidos, fechaAlta, provincia);
+
+        dto.Cliente cliente = new dto.Cliente(nombre, apellidos, fechaAlta, provincia);
         pantallaPrincipal.anadirCliente(cliente);
  
         dispose(); // Cierra y libera memoria
